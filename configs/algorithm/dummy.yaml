@@ -1,0 +1,9 @@
+name: dummy
+obs_dim: 16
+target_dim: 4
+hidden: 64
+
+# modality contract: what this algorithm consumes and produces. asserted at build time
+# against the dataset's provided_modalities, so a mismatch fails fast.
+conditioning: [observation]
+predict: [target]

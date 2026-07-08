@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+runs/
+outputs/
+wandb/
+.cache/
+*.pt
+.pytest_cache/
+.coverage
+htmlcov/
+
+# data dir: ignore contents, keep the folder + its README
+data/*
+!data/README.md

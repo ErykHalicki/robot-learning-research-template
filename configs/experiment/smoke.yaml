@@ -1,0 +1,6 @@
+tasks: [training, validation]   # stages run in order by main.py via exec_task
+batch_size: 64
+lr: 5.0e-3
+epochs: 40
+log_every: 50
+mixed_precision: "no"

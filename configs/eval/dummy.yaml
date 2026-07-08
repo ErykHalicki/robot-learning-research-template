@@ -1,0 +1,13 @@
+# eval environment for the dummy world. Self-contained: eval configs never interpolate from
+# the dataset, so an eval-only run (no dataset group) always resolves. Real backends put their
+# env/hardware params here (robot ip, episode length, reset policy, n_episodes).
+#
+# For a meaningful same-world held-out eval, weight_seed matches the dataset's task while seed
+# draws different (unseen) observations. If you change the dataset's dims/task, mirror them here.
+backend: dummy
+n: 1024
+obs_dim: 16
+target_dim: 4
+weight_seed: 0     # SAME task as the dataset (match dataset.weight_seed)
+seed: 1000         # held-out observations: a different draw than training
+n_eval: 256        # how many held-out samples to score

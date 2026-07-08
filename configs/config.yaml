@@ -1,0 +1,16 @@
+defaults:
+  - experiment: smoke      # experiment yaml in configs/experiment/ [fixme]
+  - dataset: dummy         # dataset yaml in configs/dataset/ [fixme]
+  - algorithm: dummy       # algorithm yaml in configs/algorithm/ [fixme]
+  - eval: dummy            # eval env yaml in configs/eval/ (backend defaults to dataset's)
+  - _self_
+
+debug: false               # global debug flag, available to every component
+
+wandb:
+  entity: null             # your wandb team/user; required when mode=online [fixme]
+  project: null            # defaults to the repo folder name if left null
+  mode: online             # online | offline | disabled
+
+resume: null               # wandb run id to resume: reload its checkpoint AND continue its history
+load: null                 # start a new run from weights: a wandb run id, or a local .pt path

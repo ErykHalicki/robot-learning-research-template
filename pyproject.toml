@@ -1,0 +1,38 @@
+[project]
+name = "robot-learning-research-template"
+version = "0.1.0"
+description = "Template for robot learning research projects"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "accelerate",
+    "hydra-core",
+    "omegaconf",
+    "numpy",
+]
+
+[project.optional-dependencies]
+wandb = ["wandb", "pandas", "moviepy"]
+dev = ["pytest", "pytest-cov"]
+# Backend extras go here, one per data/eval world. Each is lazy-imported by the
+# factories in datasets/ and experiments/eval/, so a base install never needs them.
+# lerobot = ["lerobot @ git+https://github.com/huggingface/lerobot.git"]
+# swm = ["stable-worldmodel"]
+# all = ["robot-learning-research-template[lerobot,swm]"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/template"]
+
+[tool.coverage.run]
+source = ["template"]
+omit = ["*/ckpt_utils.py"]  # wandb-network checkpoint glue for the entry point, exercised manually
+
+[tool.coverage.report]
+exclude_also = [
+    "raise NotImplementedError",  # abstract interface stubs
+    "except ImportError",         # optional-dependency guards
+]
